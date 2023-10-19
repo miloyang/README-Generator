@@ -1,5 +1,6 @@
 // Including the inquirer package needed for this application
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 const { writeFile } = require('fs').promises;
 
@@ -40,7 +41,7 @@ const promptUser = () => {
             type: 'list',
             message: 'What license did you use?',
             name: 'license',
-            choices: ['The MIT License', 'The GPL License', 'Apache License', 'GMU License', 'N/A'],
+            choices: ['MIT', 'GPL', 'Apache', 'GMU', 'N/A'],
             validate: (value) => { if (value) { return true } else { return 'Please choose a value to continue' } }
         },
         {
@@ -74,7 +75,7 @@ const promptUser = () => {
             validate: (value) => { if (value) { return true } else { return 'Please enter your LinkedIn to continue' } }
         },
         {
-            type: 'checkbox',
+            type: 'list',
             message: 'How do you prefer to be contacted?',
             name: 'questions',
             choices: ['email', 'GitHub', 'LinkedIn'],
@@ -83,59 +84,12 @@ const promptUser = () => {
     ]);
 };
 
-// Creating a function to write the README file
-const generateReadme = ({
-    title,
-    description,
-    installation,
-    usage,
-    credits,
-    license,
-    contribution,
-    tests,
-    GitHub,
-    email,
-    LinkedIn,
-    questions
-}) => `# ${title}
 
-## Description
-${description}
-
-## Table of Contents
-[Installations](#installation)
-[Usage](#usage)
-[Credits](#credits)
-[License](#license)
-
-## Installation
-${installation}
-
-## Usage
-${usage}
-
-## Credits
-${credits}
-
-## License
-${license}
-
-## Contribution 
-${contribution}
-
-## Tests
-${tests}
-
-## Questions
-* GitHub: ${GitHub}
-* Email: ${email}
-* LinkedIn: ${LinkedIn}
-* Contact Preference: ${questions}`
 
 // Creating a function to initialize app
 const init = () => {
     promptUser()
-    .then((answers) => writeFile('README.md', generateReadme(answers)))
+    .then((answers) => writeFile('README.md', generateMarkdown(answers)))
     .then(() => console.log('Successfully wrote to README.md'))
     .catch((err) => console.error(err));
 };

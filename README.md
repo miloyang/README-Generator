@@ -1,27 +1,47 @@
-# na
+# Project Title
+  ![LICENSE](https://img.shields.io/badge/MIT-LICENSE-blue)
 
-## Description
-na
+  ## Description
 
-## Table of Content
-na
+  Project Description
+  
+  ## Table of Contents
+  - [Installations](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Contribution](#contribution)
+  - [Tests](#tests)
+  - [Questions](#questions)
+  
+  ## Installation
 
-## Installation
-na
+  Project Installation
+  
+  ## Usage
 
-## Usage
-na
+  Project Usage
+  
+  ## Credits
 
-## License
-The MIT License
+  Project Credits
+  
+  ## License
+  
+  This application is covered under the MIT license.
+  
+ 
+  ## Contribution 
 
-## Contribution 
-na
+  Contribution
+  
+  ## Tests
 
-## Instructions
-na
+  Project Instructions
+  
+  ## Questions
 
-## Questions
-* GitHub: na
-* Email: na
-* LinkedIn: na
+  * GitHub: [Link to github](www.github.com/Michael123)
+  * Email: skdjksd@gmail.com
+  * LinkedIn: skdkkdf
+  * Contact Preference: email
