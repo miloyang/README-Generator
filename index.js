@@ -1,41 +1,22 @@
-// // TODO: Include packages needed for this application
-
-// // TODO: Create an array of questions for user input
-// const questions = [];
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) { }
-
-// // TODO: Create a function to initialize app
-// function init() { }
-
-// // Function call to initialize app
-// init();
-
-
+// Including the inquirer package needed for this application
 const inquirer = require('inquirer');
 
 const { writeFile } = require('fs').promises;
 
+// Creating an array of questions for user input
 const promptUser = () => {
     return inquirer.prompt([
         {
             type: 'input',
             message: 'What is your project title?',
             name: 'title',
-            validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
+            validate: (value) => { if (value) { return true } else { return 'Please enter a title to continue' } }
         },
         {
             type: 'input',
             message: 'What is your project description?',
             name: 'description',
-            validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
-        },
-        {
-            type: 'input',
-            message: 'What is your project table of contents?',
-            name: 'table',
-            validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
+            validate: (value) => { if (value) { return true } else { return 'Please enter a description to continue' } }
         },
         {
             type: 'input',
@@ -50,6 +31,12 @@ const promptUser = () => {
             validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
         },
         {
+            type: 'input',
+            message: 'Any credits?',
+            name: 'credits',
+            validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
+        },
+        {
             type: 'list',
             message: 'What license did you use?',
             name: 'license',
@@ -58,64 +45,68 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            message: 'Any contribution or credits to list?',
+            message: 'How come others contribute to your application?',
             name: 'contribution',
-            validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
+            validate: (value) => { if (value) { return true } else { return 'Please enter a value or write N/A to continue' } }
         },
         {
             type: 'input',
             message: 'Any test instructions?',
-            name: 'instructions',
+            name: 'tests',
             validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
         },
         {
             type: 'input',
             message: 'What is your GitHub username?',
             name: 'GitHub',
-            validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
+            validate: (value) => { if (value) { return true } else { return 'Please enter a valid GitHub to continue' } }
         },
         {
             type: 'input',
             message: 'What is your email address?',
             name: 'email',
-            validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
+            validate: (value) => { if (value) { return true } else { return 'Please enter a valid email address to continue' } }
         },
         {
             type: 'input',
             message: 'What is your LinkedIn?',
             name: 'LinkedIn',
-            validate: (value) => { if (value) { return true } else { return 'Please enter a value to continue' } }
+            validate: (value) => { if (value) { return true } else { return 'Please enter your LinkedIn to continue' } }
         },
         {
             type: 'checkbox',
             message: 'How do you prefer to be contacted?',
-            name: 'contact',
+            name: 'questions',
             choices: ['email', 'GitHub', 'LinkedIn'],
-            validate: (value) => { if (value) { return true } else { return 'Please pick a value to continue' } }
+            validate: (value) => { if (value) { return true } else { return 'Please choose a value to continue' } }
         },
     ]);
 };
 
+// Creating a function to write the README file
 const generateReadme = ({
     title,
     description,
-    table,
     installation,
     usage,
+    credits,
     license,
     contribution,
-    instructions,
+    tests,
     GitHub,
     email,
     LinkedIn,
-    contact
+    questions
 }) => `# ${title}
 
 ## Description
 ${description}
 
-## Table of Content
-${table}
+## Table of Contents
+[Installations](#installation)
+[Usage](#usage)
+[Credits](#credits)
+[License](#license)
 
 ## Installation
 ${installation}
@@ -123,25 +114,31 @@ ${installation}
 ## Usage
 ${usage}
 
+## Credits
+${credits}
+
 ## License
 ${license}
 
 ## Contribution 
 ${contribution}
 
-## Instructions
-${instructions}
+## Tests
+${tests}
 
-## Contact
+## Questions
 * GitHub: ${GitHub}
 * Email: ${email}
-* LinkedIn: ${LinkedIn}`;
+* LinkedIn: ${LinkedIn}
+* Contact Preference: ${questions}`
 
-Const init = () => {
+// Creating a function to initialize app
+const init = () => {
     promptUser()
     .then((answers) => writeFile('README.md', generateReadme(answers)))
     .then(() => console.log('Successfully wrote to README.md'))
     .catch((err) => console.error(err));
 };
 
+// Function call to initialize app
 init();
