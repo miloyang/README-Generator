@@ -46,7 +46,7 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            message: 'How come others contribute to your application?',
+            message: 'How can others contribute to your application?',
             name: 'contribution',
             validate: (value) => { if (value) { return true } else { return 'Please enter a value or write N/A to continue' } }
         },
@@ -83,8 +83,6 @@ const promptUser = () => {
         },
     ]);
 };
-
-
 
 // Creating a function to initialize app
 const init = () => {
