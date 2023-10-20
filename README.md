@@ -21,7 +21,7 @@ In the terminal, go into the folder that you are currently in. To do that, type 
 Once in the correct folder, enter "node index.js". This will initiate the questions prompts for you to enter all the details required for a professional README.md file. 
 
 Below is a screenshot of how to open the terminal in VS Code:
-![Screenshot of how to open the terminal in VS Code](assets/images/screenshot1.png)
+![Screenshot of how to open the terminal in VS Code](assets/images/screenshot.png)
 
 Below is a link to a walkthrough video to assist with how to use the application:
 [Click here for the walkthrough video]( https://drive.google.com/file/d/1aMU7cN8cAIz_Bstxsr0-7BjRGD3RcYjD/view)
